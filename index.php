@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p class="m-0 text-center">Thanks for contact us</p>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-            <?php else: ?>
+            <?php elseif (isset($success) && !$success): ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <p class="m-0 text-center">There is an error, please try again</p>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -77,8 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" class="row g-3 needs-validation" novalidate>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">First name</label>
-                    <input name="f_name" type="text" value="<?php if ($find_errors) echo $user['f_name']; ?>"
-                           class="form-control <?php if ($find_errors) echo($errors['f_name'] ? '' : 'is-invalid'); ?> "
+                    <input name="f_name" type="text" value="<?php if (isset($find_errors) && $find_errors) echo $user['f_name']; ?>"
+                           class="form-control <?php if (isset($find_errors) && $find_errors) echo($errors['f_name'] ? '' : 'is-invalid'); ?> "
                            id="validationCustom01" pattern=".{3,}" required>
                     <div class="invalid-feedback">
                         Please provide your first name.
@@ -86,8 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom02" class="form-label">Last name</label>
-                    <input name="l_name" type="text" value="<?php if ($find_errors) echo $user['l_name']; ?>"
-                           class="form-control  <?php if ($find_errors) echo($errors['l_name'] ? '' : 'is-invalid'); ?> "
+                    <input name="l_name" type="text" value="<?php if (isset($find_errors) && $find_errors) echo $user['l_name']; ?>"
+                           class="form-control  <?php if (isset($find_errors) && $find_errors) echo($errors['l_name'] ? '' : 'is-invalid'); ?> "
                            id="validationCustom02" pattern=".{3,}"
                            required>
                     <div class="invalid-feedback">
@@ -98,8 +98,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="validationCustomUsername" class="form-label">Username</label>
                     <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input name="username" type="text" value="<?php if ($find_errors) echo $user['username']; ?>"
-                               class="form-control <?php if ($find_errors) echo($errors['username'] ? '' : 'is-invalid'); ?> "
+                        <input name="username" type="text" value="<?php if (isset($find_errors) && $find_errors) echo $user['username']; ?>"
+                               class="form-control <?php if (isset($find_errors) && $find_errors) echo($errors['username'] ? '' : 'is-invalid'); ?> "
                                id="validationCustomUsername"
                                aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
@@ -109,8 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="col-md-6">
                     <label for="validationCustom03" class="form-label">Email</label>
-                    <input name="email" type="email" value="<?php if ($find_errors) echo $user['email']; ?>"
-                           class="form-control <?php if ($find_errors) echo($errors['email'] ? '' : 'is-invalid'); ?> "
+                    <input name="email" type="email" value="<?php if (isset($find_errors) && $find_errors) echo $user['email']; ?>"
+                           class="form-control <?php if (isset($find_errors) && $find_errors) echo($errors['email'] ? '' : 'is-invalid'); ?> "
                            id="validationCustom03" required>
                     <div class="invalid-feedback">
                         Please provide a valid email.
@@ -119,8 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-md-6">
                     <label for="validationCustom04" class="form-label">Phone</label>
                     <input name="phone" type="text" pattern="^(\+2)?01[0-2]\d{1,8}$"
-                           value="<?php if ($find_errors) echo $user['phone']; ?>"
-                           class="form-control <?php if ($find_errors) echo($errors['phone'] ? '' : 'is-invalid'); ?> "
+                           value="<?php if (isset($find_errors) && $find_errors) echo $user['phone']; ?>"
+                           class="form-control <?php if (isset($find_errors) && $find_errors) echo($errors['phone'] ? '' : 'is-invalid'); ?> "
                            id="validationCustom04" required>
                     <div class="invalid-feedback">
                         Please provide a valid phone number.
@@ -129,9 +129,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-md-12">
                     <label for="validationCustom05" class="form-label">Message</label>
                     <textarea name="message"
-                              class="form-control <?php if ($find_errors) echo($errors['message'] ? '' : 'is-invalid'); ?> "
+                              class="form-control <?php if (isset($find_errors) && $find_errors) echo($errors['message'] ? '' : 'is-invalid'); ?> "
                               id="validationCustom05" required minlength="20"
-                              rows="4"><?php if ($find_errors) echo($user['message']); ?></textarea>
+                              rows="4"><?php if (isset($find_errors) && $find_errors) echo($user['message']); ?></textarea>
                     <div class="invalid-feedback">
                         Message input is required (min is 15 char).
                     </div>
@@ -151,6 +151,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
 <!-- custom script   -->
-<!--<script src="js/script.js"></script>-->
+<script src="js/script.js"></script>
 </body>
 </html>
